@@ -9,7 +9,7 @@ After=network-online.target
 [Service]
 Type=oneshot
 RemainAfterExit=true
-WorkingDirectory=/etc/duckdns-and-letsencrypt
+WorkingDirectory=DESTDIR
 ExecStart=DOCKER_COMPOSE up -d --remove-orphans
 ExecStop=DOCKER_COMPOSE down
 

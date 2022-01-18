@@ -33,7 +33,7 @@ $(builddir)/docker-compose.yml: $(srcdir)/docker-compose.yml
 
 $(builddir)/duckdns-and-letsencrypt.service: $(srcdir)/duckdns-and-letsencrypt.service
 	cp $(srcdir)/duckdns-and-letsencrypt.service $(builddir)/.
-	$(SED) -i -e "s:DOCKER_COMPOSE:$(DOCKER_COMPOSE):g" $(builddir)/duckdns-and-letsencrypt.service
+	$(SED) -i -e "s|DOCKER_COMPOSE|$(DOCKER_COMPOSE)|g" -e "s|DESTDIR|$(DESTDIR)|g" $(builddir)/duckdns-and-letsencrypt.service
 
 install: build installdirs
 	$(INSTALL) -m 664 $(builddir)/duckdns-and-letsencrypt.service $(DESTDIR)
