@@ -37,15 +37,26 @@ $(builddir)/duckdns-and-letsencrypt.service: $(srcdir)/duckdns-and-letsencrypt.s
 
 install: build installdirs
 	$(INSTALL) -m 664 $(builddir)/duckdns-and-letsencrypt.service $(DESTDIR)
-	$(INSTALL) -m 664 $(builddir)/.env $(DESTDIR)
+	$(INSTALL) -m 664 $(builddir)/docker-compose.yml $(DESTDIR)
+	@if test -f "$(DESTDIR)/.env"; then \
+		if cmp -s "$(builddir)/.env" "$(DESTDIR)/.env" ; then \
+			$(INSTALL) -m 664 $(builddir)/.env $(DESTDIR) ; \
+	  else \
+			echo "WARNING! Leaving $(DESTDIR)/.env since it has local changes" ; \
+      echo "         If you want to overwrite it, do:" ; \
+      echo "         sudo $(INSTALL) -m 644 $(builddir)/.env $(DESTDIR)" ; \
+    fi \
+	fi
 	$(LN_S) -f $(DESTDIR)/duckdns-and-letsencrypt.service $(SYSTEMD_LIBDIR)/.
 	systemctl enable duckdns-and-letsencrypt.service
 
 uninstall:
 	systemctl disable --now duckdns-and-letsencrypt.service || true
-	rm -rf $(DESTDIR)
 	rm -f $(SYSTEMD_LIBDIR)/duckdns-and-letsencrypt.service
-	find $(libdir) -type d -empty -delete
+	rm -f $(DESTDIR)/duckdns-and-letsencrypt.service $(DESTDIR)/docker-compose.yml
+	echo "NOTE! Leaving $(DESTDIR) since it may have local changes or certificates"
+	echo "      If you want to remove it (and duckdns-and-letsencrypt) completely, do:"
+  echo "      sudo rm -rf $(DESTDIR)"
 
 installdirs: $(DESTDIR) $(SYSTEMD_LIBDIR)
 
