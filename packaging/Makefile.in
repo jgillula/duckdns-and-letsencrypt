@@ -46,6 +46,8 @@ install: build installdirs
       echo "         If you want to overwrite it, do:" ; \
       echo "         sudo $(INSTALL) -m 644 $(builddir)/.env $(DESTDIR)" ; \
     fi \
+	else \
+		$(INSTALL) -m 664 $(builddir)/.env $(DESTDIR) ; \
 	fi
 	$(LN_S) -f $(DESTDIR)/duckdns-and-letsencrypt.service $(SYSTEMD_LIBDIR)/.
 	systemctl enable duckdns-and-letsencrypt.service
