@@ -1,4 +1,6 @@
-duckdns
+# Based off of https://github.com/maksimstojkovic/docker-letsencrypt/blob/master/docker-compose.yml
+
+duckdns:
   image: maksimstojkovic/duckdns
   container_name: duckdns
   environment:
