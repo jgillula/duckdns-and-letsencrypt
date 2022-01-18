@@ -1,0 +1,18 @@
+duckdns
+  image: maksimstojkovic/duckdns
+  container_name: duckdns
+  environment:
+    - DUCKDNS_TOKEN=${DUCKDNS_TOKEN}
+    - DUCKDNS_DOMAIN=${DUCKDNS_DOMAIN}
+    - DUCKDNS_DELAY=5
+  restart: unless-stopped
+
+letsencrypt:
+  image: maksimstojkovic/letsencrypt
+  container_name: letsencrypt
+  volumes:
+    - ./certs:/etc/letsencrypt
+  environment:
+    - DUCKDNS_TOKEN=${DUCKDNS_TOKEN}
+    - DUCKDNS_DOMAIN=${DUCKDNS_DOMAIN}
+  restart: unless-stopped

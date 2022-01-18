@@ -1,0 +1,17 @@
+# Based off of https://gist.github.com/mosquito/b23e1c1e5723a7fd9e6568e5cf91180f
+
+[Unit]
+Description=DuckDNS and Let's Encrypt service using docker compose
+Requires=docker.service
+After=docker.service
+After=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+WorkingDirectory=/etc/duckdns-and-letsencrypt
+ExecStart=DOCKER_COMPOSE up -d --remove-orphans
+ExecStop=DOCKER_COMPOSE down
+
+[Install]
+WantedBy=multi-user.target
