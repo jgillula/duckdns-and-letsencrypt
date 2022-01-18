@@ -17,4 +17,6 @@ letsencrypt:
   environment:
     - DUCKDNS_TOKEN=${DUCKDNS_TOKEN}
     - DUCKDNS_DOMAIN=${DUCKDNS_DOMAIN}
+    - UID=${UID}
+    - GID=${GID}
   restart: unless-stopped
