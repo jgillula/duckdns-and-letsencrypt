@@ -3016,7 +3016,7 @@ fi
 
 { $as_echo "$as_me:${as_lineno-$LINENO}: NOTE: After installing, edit your configuration at $sysconfdir/duckdns-and-letsencrypt/.env" >&5
 $as_echo "$as_me: NOTE: After installing, edit your configuration at $sysconfdir/duckdns-and-letsencrypt/.env" >&6;}
-{ $as_echo "$as_me:${as_lineno-$LINENO}: Your certificates will be available in $sysconfdir/duckdns-and-letsencrypt/certs" >&5
-$as_echo "$as_me: Your certificates will be available in $sysconfdir/duckdns-and-letsencrypt/certs" >&6;}
-{ $as_echo "$as_me:${as_lineno-$LINENO}: Using \${prefix}=$prefix" >&5
-$as_echo "$as_me: Using \${prefix}=$prefix" >&6;}
+{ $as_echo "$as_me:${as_lineno-$LINENO}:       Your certificates will be available in $sysconfdir/duckdns-and-letsencrypt/certs" >&5
+$as_echo "$as_me:       Your certificates will be available in $sysconfdir/duckdns-and-letsencrypt/certs" >&6;}
+{ $as_echo "$as_me:${as_lineno-$LINENO}:       Using \${prefix}=$prefix" >&5
+$as_echo "$as_me:       Using \${prefix}=$prefix" >&6;}

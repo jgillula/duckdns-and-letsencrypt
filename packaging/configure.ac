@@ -21,5 +21,5 @@ AC_OUTPUT
 
 dnl Print the results to the screen
 AC_MSG_NOTICE([NOTE: After installing, edit your configuration at $sysconfdir/duckdns-and-letsencrypt/.env])
-AC_MSG_NOTICE([Your certificates will be available in $sysconfdir/duckdns-and-letsencrypt/certs])
-AC_MSG_NOTICE([Using \${prefix}=$prefix])
+AC_MSG_NOTICE([      Your certificates will be available in $sysconfdir/duckdns-and-letsencrypt/certs])
+AC_MSG_NOTICE([      Using \${prefix}=$prefix])
