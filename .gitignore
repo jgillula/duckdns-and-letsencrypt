@@ -1,3 +1,4 @@
+tmp/
 config.log
 config.status
 Makefile

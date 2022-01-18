@@ -54,9 +54,7 @@ uninstall:
 	systemctl disable --now duckdns-and-letsencrypt.service || true
 	rm -f $(SYSTEMD_LIBDIR)/duckdns-and-letsencrypt.service
 	rm -f $(DESTDIR)/duckdns-and-letsencrypt.service $(DESTDIR)/docker-compose.yml
-	echo "NOTE! Leaving $(DESTDIR) since it may have local changes or certificates"
-	echo "      If you want to remove it (and duckdns-and-letsencrypt) completely, do:"
-  echo "      sudo rm -rf $(DESTDIR)"
+	@printf '%s\n' "NOTE! Leaving $(DESTDIR) since it may have local changes or certificates" "      If you want to remove it (and duckdns-and-letsencrypt) completely, do:" "      sudo rm -rf $(DESTDIR)"
 
 installdirs: $(DESTDIR) $(SYSTEMD_LIBDIR)
 
